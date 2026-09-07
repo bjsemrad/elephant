@@ -104,6 +104,10 @@ func Query(data string, async, j bool) {
 			panic("invalid protocol prefix")
 		}
 
+		if header[0] == empty {
+			continue
+		}
+
 		length := binary.BigEndian.Uint32(header[1:5])
 
 		msg := make([]byte, 5+length)
